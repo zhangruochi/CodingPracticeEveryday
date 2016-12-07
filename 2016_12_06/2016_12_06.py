@@ -24,13 +24,31 @@ def max_rot(n):
         n = n[0:i] + n[i+1:] + n[i]
         print(n)
         result.append(int(n))    
-    return max(result)    
-        
+    return max(result)
+
+def anagrams(word, words):
+    result = []
+    for item in words:
+        if set(list(item)) == set(list(word)):
+            result.append(item)
+
+    return result        
+
+def sum_pairs(ints, s):
+    result_dict = {}
+    for index_i,value_i in enumerate(ints):
+        for index_j,value_j in enumerate(ints):
+            if index_i == index_j:
+                continue
+            if value_i + value_j == s:
+                result_dict[(value_i,value_j)] = index_i + index_j
+
+    print(sorted(result_dict.items(),key = lambda x:x[1]))          
+
+
     
 
 
 if __name__ == '__main__':
-    result = max_rot(99249557)
-    print(result)
-
+    print(sum_pairs([10, 5, 2, 3, 7, 5], 10))
     
