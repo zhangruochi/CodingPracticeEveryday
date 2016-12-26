@@ -25,11 +25,23 @@ class Proxy:
             setattr(self._obj,name,value)
 
 
+class A(object):  
+    def __init__(self):  
+        self.name = 'from __dicts__: zdy'  
+  
+    def __getattr__(self, item):  
+        if item == 'name':  
+            return 'from __getattr__: zdy'  
+        elif item == 'age':  
+            return 26  
+  
+a = A()  
+print(a.name) # 从__dict__里获得的  
+print(a.age) # 从__getattr__获得的
+
 
 if __name__ == '__main__':
     b = B()
     b.spam() 
     b.print_A_spam() 
-
-    p = Proxy("zhangruochi")  
-    print(p)                
+           
